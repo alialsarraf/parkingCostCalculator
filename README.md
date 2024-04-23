@@ -10,6 +10,7 @@
   - [Running the tests and reports](#running-the-tests-and-reports)
   - [The Kata](#the-kata)
   - [Tests written](#tests-written)
+  - [Page Object Model](#page-object-model)
   - [Further work](#further-work)
   - [Disclaimer:](#disclaimer)
 
@@ -64,11 +65,16 @@ Error Flow:
 * Entering invalid leave time, will generate the proper error message. I used that as expected error message, for previous test.
 
 
+## Page Object Model
+
+Page object model have been written for few of the common feautres for the `Parking Cost Calculator` page.
+
+
 ## Further work
 
 For the scope of this technical interview, I just focused on basic simple written tests and the nature of targetted website.
 
-The next step, I will ideally focused on building Page Object model for the both basic page and the Date selector pop up pages.
+The next step, I will ideally focused on building Page Object model for the Date selector pop up pages.
 This will help me to reduce all duplicate codes that can be seen in the generated tests, for examples:
  * the page actions for date and time selector. as all these should resides in the Page Objects or helper methods (if needed for data setup), as the tests should ideally only contains test verifications only and make it cleaner.
   
