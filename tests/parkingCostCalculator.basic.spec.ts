@@ -1,7 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test('Calculating One Day Valet Parking Rate', async ({ page }) => {
+test.beforeEach(async ({ page }) => {
     await page.goto('https://www.shino.de/parkcalc/');
+});
+
+test('Calculating One Day Valet Parking Rate', async ({ page }) => {
+    expect(page.url()).toBe('https://www.shino.de/parkcalc/');
     const page1Promise = page.waitForEvent('popup');
     await page.getByRole('row', { name: 'Please input entry date and' }).getByRole('link').click();
     const page1 = await page1Promise;
@@ -16,7 +20,7 @@ test('Calculating One Day Valet Parking Rate', async ({ page }) => {
 });
 
 test('Calculating One Day Short Term Parking Rate', async ({ page }) => {
-    await page.goto('https://www.shino.de/parkcalc/');
+    expect(page.url()).toBe('https://www.shino.de/parkcalc/');
     await page.locator('#ParkingLot').selectOption('Short');
     const page1Promise = page.waitForEvent('popup');
     await page.getByRole('row', { name: 'Please input entry date and' }).getByRole('link').click();
@@ -37,7 +41,7 @@ test('Calculating One Day Short Term Parking Rate', async ({ page }) => {
 });
 
 test('Calculating One Day Economy Lot Parking Rate', async ({ page }) => {
-    await page.goto('https://www.shino.de/parkcalc/');
+    expect(page.url()).toBe('https://www.shino.de/parkcalc/');
     await page.locator('#ParkingLot').selectOption('Economy');
     const page5Promise = page.waitForEvent('popup');
     await page.getByRole('row', { name: 'Please input entry date and' }).getByRole('link').click();

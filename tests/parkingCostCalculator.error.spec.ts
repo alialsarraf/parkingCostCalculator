@@ -1,7 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test('Trigger an Error message when failed to enter Entry and Leaving Date', async ({ page }) => {
+test.beforeEach(async ({ page }) => {
   await page.goto('https://www.shino.de/parkcalc/');
+});
+
+test('Trigger an Error message when failed to enter Entry and Leaving Date', async ({ page }) => {
+  expect(page.url()).toBe('https://www.shino.de/parkcalc/');
   await page.getByRole('button', { name: 'Calculate' }).click();
   await page.getByText('ERROR! Enter A Correctly').dblclick();
   await expect(page.getByText('ERROR! Enter A Correctly')).toBeVisible();
@@ -9,7 +13,7 @@ test('Trigger an Error message when failed to enter Entry and Leaving Date', asy
 
 
 test('Trigger an error when entering invalid Start time', async ({ page }) => {
-  await page.goto('https://www.shino.de/parkcalc/');
+  expect(page.url()).toBe('https://www.shino.de/parkcalc/');
   const page1Promise = page.waitForEvent('popup');
   await page.getByRole('row', { name: 'Please input entry date and' }).getByRole('link').click();
   const page1 = await page1Promise;
@@ -29,12 +33,11 @@ test('Trigger an error when entering invalid Start time', async ({ page }) => {
   await page.locator('#StartingTime').press('ArrowLeft');
   await page.locator('#StartingTime').fill('ererer12:00');
   await page.getByRole('button', { name: 'Calculate' }).click();
-  await page.getByText('$ 356,670.00').click();
   await expect(page.getByText('ERROR! Your Leaving Date Or')).toBeVisible();
 });
 
 test('Trigger an error when entering invalid Leaving time ', async ({ page }) => {
-  await page.goto('https://www.shino.de/parkcalc/');
+  expect(page.url()).toBe('https://www.shino.de/parkcalc/');
   await page.locator('#StartingDate').click();
   await page.locator('#StartingTime').click();
   const page1Promise = page.waitForEvent('popup');

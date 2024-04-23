@@ -70,7 +70,6 @@ For the scope of this technical interview, I just focused on basic simple writte
 
 The next step, I will ideally focused on building Page Object model for the both basic page and the Date selector pop up pages.
 This will help me to reduce all duplicate codes that can be seen in the generated tests, for examples:
- * the lunching of website link
  * the page actions for date and time selector. as all these should resides in the Page Objects or helper methods (if needed for data setup), as the tests should ideally only contains test verifications only and make it cleaner.
   
 

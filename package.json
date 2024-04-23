@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "npx playwright test --trace on",
+    "test": "npx playwright test",
     "yarnInstall": "yarn install",
     "report": "npx playwright show-report"
   },
